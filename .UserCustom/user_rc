@@ -1,0 +1,68 @@
+####################################################
+#user/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export VISUAL=nano
+export EDITOR=nano
+
+####################################################
+#nnn
+alias nnn="nnn -cx"
+alias N='sudo -E nnn -cx'
+export NNN_TRASH=2
+export GUI=1
+export NNN_FIFO=/tmp/nnn.fifo
+export NNN_OPENER=~/.config/nnn/plugins/nuke
+export NNN_COPIER=~/.config/nnn/plugins/.cbcp
+export NNN_PLUG='e:suedit;o:!&open $nnn*;f:fzcd;'
+export NNN_BMS='h:~/;d:~/Downloads/'
+
+n ()
+{
+    if [[ "${NNNLVL:-0}" -ge 1 ]]; then
+        echo "nnn is already running"
+        return
+    fi
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    \nnn -cx "$@"
+    if [ -f "$NNN_TMPFILE" ]; then
+            . "$NNN_TMPFILE"
+            rm -f "$NNN_TMPFILE" > /dev/null
+    fi
+}
+
+####################################################
+#plocate
+alias p='plocate -b -l 10 '
+alias pp='sudo updatedb'
+
+####################################################
+#nala
+#alias upgrade='sudo nala upgrade'
+
+####################################################
+#git
+alias gitlog='git log --graph --pretty=format:"%h %s"'
+
+####################################################
+#nano
+alias nano='nano -F'
+
+####################################################
+#other
+
+####################################################
+#fzf
+export FZF_DEFAULT_COMMAND='
+        fd --hidden --glob --follow --max-depth 10 --strip-cwd-prefix --exclude .git --exclude build '
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="
+        --height 50% --reverse --border --keep-right "
+export FZF_CTRL_R_OPTS="$FZF_CTRL_T_OPTS"
+
+###################################################
+#tmux
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#  exec tmux
+#fi
+
