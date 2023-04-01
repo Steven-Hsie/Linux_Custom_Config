@@ -8,13 +8,13 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
+
 #Set up my custom command
 [ -f ~/.UserCustom/user_bashrc ] && source ~/.UserCustom/user_bashrc
 
 #fzf
 source "/usr/share/fzf/key-bindings.bash"
 source "/usr/share/fzf/completion.bash"
-
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
