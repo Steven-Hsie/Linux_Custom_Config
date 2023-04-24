@@ -66,3 +66,6 @@ export FZF_CTRL_R_OPTS="$FZF_CTRL_T_OPTS"
 #  exec tmux
 #fi
 
+###################################################
+#xz multithreading compression
+export XZ_DEFAULTS="-T0"
